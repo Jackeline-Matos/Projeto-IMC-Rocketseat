@@ -36,7 +36,11 @@ close() {
 
  */    
     open: function(){
-         Modal.wrapper.classList.add("open")
+
+        if (inputWeight.value && inputHeight.value ){
+            Modal.wrapper.classList.add("open")
+        }
+         
     },
     close: function () {
         Modal.wrapper.classList.remove("open")
