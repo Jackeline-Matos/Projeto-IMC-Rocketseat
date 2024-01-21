@@ -4,10 +4,45 @@ const form = document.querySelector("form");
 const inputWeight = document.querySelector("#weight");
 const inputHeight = document.querySelector("#height");
 
+
+/* 
+
+As variaveis tb ficaram dentro do obj literal, para organizar 
+melhor a leitura do código e corrigir algum erro se for o caso.
+
 const modalWrapper = document.querySelector(".modal-wrapper");
 const modalMessege = document.querySelector(".modal .title span");
-const modalBtnClose = document.querySelector(".modal button.close");
+const modalBtnClose = document.querySelector(".modal button.close"); */
 
+
+//objeto literal
+const Modal = {
+
+    wrapper: document.querySelector(".modal-wrapper"),
+    messege: document.querySelector(".modal .title span"),
+    buttonClose: document.querySelector(".modal button.close"),
+    
+/*   
+    *Essa funcao atribuida a uma propriedade tb pode
+    ser escrita da seguinte forma:
+open() {
+
+},
+close() {
+
+},
+
+
+
+ */    
+    open: function(){
+         Modal.wrapper.classList.add("open")
+    },
+    close: function () {
+        Modal.wrapper.classList.remove("open")
+
+    },
+}
 
 
 
@@ -36,18 +71,24 @@ form.onsubmit = function(event){
 
     event.preventDefault()
 
-    const weight = inputWeight.value;
-    const height = inputHeight.value;
+    const weight = inputWeight.value
+    const height = inputHeight.value
 
-    const result = IMC(weight, height);
-    const message = `Seu IMC é ${result}`;
+    const result = IMC(weight, height)
+    const message = `Seu IMC é ${result}`
 
-    modalMessege.innerText = message;
-    modalWrapper.classList.add("open");
+    Modal.messege.innerText = message
+    //modalWrapper.classList.add("open");
+
+        Modal.open() // a funcao do obj literal foi chamada aqui
+    
+
+
 }
 
-modalBtnClose.onclick = ()=> {
-    modalWrapper.classList.remove("open");
+    Modal.buttonClose.onclick = ()=> {
+    //modalWrapper.classList.remove("open");
+    Modal.close() // a funcao do obj literal foi chamada aqui
 
 }
 
